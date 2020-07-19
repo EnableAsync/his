@@ -2,8 +2,6 @@ package com.rai.his.domain;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class RegisterRecord {
     private int doc;
