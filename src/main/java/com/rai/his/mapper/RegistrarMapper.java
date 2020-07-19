@@ -13,10 +13,10 @@ import java.util.List;
 @Repository
 public interface RegistrarMapper {
     @Select(
-            "{call register(#{doctor_id,mode=IN}, #{name,mode=IN}," +
+            "{call register(#{doc,mode=IN}, #{name,mode=IN}," +
                     "#{genders,mode=IN}, #{birth,mode=IN}," +
                     "#{id_number,mode=IN}, #{address,mode=IN},"+
-                    "#{register_type,mode=IN}, #{register_dept,mode=IN})}"
+                    "#{register_type,mode=IN}, #{dept,mode=IN})}"
     )
     @Options(statementType= StatementType.CALLABLE)
     ProcedureResult register(RegisterRecord record);

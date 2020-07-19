@@ -4,6 +4,7 @@ import com.rai.his.domain.DiagnosisRecord;
 import com.rai.his.vo.DiseaseVO;
 import com.rai.his.domain.PrescribeRecord;
 import com.rai.his.domain.ProcedureResult;
+import com.rai.his.vo.DrugVO;
 import com.rai.his.vo.RegisterRecordVO;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -22,6 +23,9 @@ public interface DoctorMapper {
 
     @Select("select id, disease_name from diseases")
     List<DiseaseVO> getDisease();
+
+    @Select("select id, drug_name from drugs")
+    List<DrugVO> getDrugs();
 
     @Select(
             "{call diagnosis(#{reg_id,mode=IN}, #{pres,mode=IN}," +

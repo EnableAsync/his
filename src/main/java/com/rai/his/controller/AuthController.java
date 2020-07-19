@@ -39,7 +39,6 @@ public class AuthController {
         }
 
         request.getSession().setAttribute("user", u);
-
         return new ResponseEntity<>(
                 ResultUtil.success(""),
                 HttpStatus.OK

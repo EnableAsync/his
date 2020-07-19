@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class RegisterRecord {
-    private int doctor_id;
+    private int doc;
 
     private String name;
 
@@ -20,5 +20,5 @@ public class RegisterRecord {
 
     private int register_type;
 
-    private int register_dept;
+    private int dept;
 }
