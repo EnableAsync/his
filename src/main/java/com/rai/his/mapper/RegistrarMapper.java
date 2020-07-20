@@ -1,8 +1,10 @@
 package com.rai.his.mapper;
 
 import com.rai.his.domain.Doctor;
+import com.rai.his.domain.PayRecord;
 import com.rai.his.domain.ProcedureResult;
 import com.rai.his.domain.RegisterRecord;
+import com.rai.his.vo.NeedPayVO;
 import com.rai.his.vo.RegisterRecordVO;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.StatementType;
@@ -30,4 +32,10 @@ public interface RegistrarMapper {
     @Select("select doctors.id,name,dept_id,dept_name from doctors left join departments as d on " +
             "doctors.dept_id = d.id where doctors.removed = 0")
     List<Doctor> getDoctors();
+
+    @Select("{call pay(#{pres_id,mode=IN}, #{operator_id})}")
+    ProcedureResult pay(PayRecord record);
+
+    @Select("select distinct prescription_id from prescription_details where pay = 0 and removed = 0 order by id desc")
+    List<NeedPayVO> getNeedPay();
 }
